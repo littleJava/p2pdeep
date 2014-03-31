@@ -1,0 +1,39 @@
+package com.p2p.spider.fazhan;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import com.p2p.spider.fazhan.module.Tender;
+import com.p2p.spider.fazhan.module.Tenders;
+import com.sun.istack.internal.Nullable;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+import us.codecraft.webmagic.ResultItems;
+import us.codecraft.webmagic.pipeline.ResultItemsCollectorPipeline;
+
+import java.io.File;
+import java.util.List;
+
+/**
+ * flush the data to xml
+ *
+ * @author: haibo.lhb@alibaba-inc.com <br/>
+ * User: haibo.lhb
+ * Date: 14-3-23
+ */
+public class FazhanXmlPipeline extends ResultItemsCollectorPipeline {
+    public void flush(String filePath) throws Exception {
+        List<ResultItems> resultItems = super.getCollected();
+        List<Tender> tenders = Lists.transform(resultItems, new Function<ResultItems, Tender>() {
+            @Override
+            public Tender apply(@Nullable ResultItems resultItem) {
+                Tender tender = resultItem.get("tender");
+                return tender;
+            }
+        });
+        Tenders allTender = new Tenders();
+        allTender.setTrenders(tenders);
+        Serializer serializer = new Persister();
+        File xmlFile = new File(filePath);
+        serializer.write(allTender, xmlFile);
+    }
+}
