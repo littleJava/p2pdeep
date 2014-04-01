@@ -1,4 +1,4 @@
-package com.p2p.spider;
+package com.p2p.spider.processor;
 
 import com.p2p.spider.net.CustomSite;
 import us.codecraft.webmagic.Page;

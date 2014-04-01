@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.p2pdeep</groupId>
-    <artifactId>p2pdeep</artifactId>
+    <artifactId>spider</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <webmagic-version>0.4.3</webmagic-version>
