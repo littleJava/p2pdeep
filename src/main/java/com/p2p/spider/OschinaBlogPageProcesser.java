@@ -1,5 +1,6 @@
 package com.p2p.spider;
 
+import com.p2p.spider.net.CustomSite;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;

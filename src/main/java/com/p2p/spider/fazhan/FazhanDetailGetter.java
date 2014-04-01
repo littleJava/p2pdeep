@@ -1,6 +1,6 @@
 package com.p2p.spider.fazhan;
 
-import com.p2p.spider.CustomSite;
+import com.p2p.spider.net.CustomSite;
 import com.p2p.spider.fazhan.module.Invest;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.CookieStore;

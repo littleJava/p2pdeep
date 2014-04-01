@@ -2,7 +2,7 @@ package com.p2p.spider.fazhan;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import com.p2p.spider.CustomSite;
+import com.p2p.spider.net.CustomSite;
 import com.p2p.spider.common.Platform;
 import com.p2p.spider.fazhan.module.Invest;
 import com.p2p.spider.fazhan.module.Investor;
@@ -11,6 +11,7 @@ import com.p2p.spider.net.HttpProxyFactory;
 import com.sun.istack.internal.Nullable;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.http.HttpHost;
+import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -27,6 +28,7 @@ import static org.apache.commons.lang.StringUtils.*;
  * User: haibo.lhb
  * Date: 14-3-22
  */
+@Component
 public class FazhanDetailPageProcessor implements PageProcessor {
 
     private Site site;

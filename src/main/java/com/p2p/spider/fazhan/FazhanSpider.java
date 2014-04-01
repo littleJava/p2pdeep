@@ -2,6 +2,7 @@ package com.p2p.spider.fazhan;
 
 import com.p2p.spider.fazhan.module.InvestSet;
 import com.p2p.spider.fazhan.pipeline.FazhanXmlPipeline;
+import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 
@@ -10,6 +11,7 @@ import us.codecraft.webmagic.pipeline.ConsolePipeline;
  * User: haibo.lhb
  * Date: 14-3-22
  */
+@Component
 public class FazhanSpider {
 
 

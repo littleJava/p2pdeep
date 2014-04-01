@@ -2,15 +2,15 @@ package com.p2p.spider.fazhan;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import com.p2p.spider.CustomSite;
+import com.p2p.spider.net.CustomSite;
 import com.p2p.spider.common.EnvConstant;
 import com.p2p.spider.common.Platform;
 import com.p2p.spider.fazhan.module.Invest;
 import com.p2p.spider.fazhan.module.InvestSet;
 import com.p2p.spider.fazhan.pipeline.DbListPagePipeline;
-import com.p2p.spider.fazhan.pipeline.FazhanXmlPipeline;
 import com.p2p.spider.utils.RandomUtil;
 import com.sun.istack.internal.Nullable;
+import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -28,6 +28,7 @@ import static org.apache.commons.lang.StringUtils.*;
  * User: haibo.lhb
  * Date: 14-3-22
  */
+@Component
 public class FazhanListPageProcessor implements PageProcessor {
 
     private Site site ;
@@ -47,7 +48,7 @@ public class FazhanListPageProcessor implements PageProcessor {
         page.putField("content", page.getHtml().$("div.content").toString());
         page.putField("tags", page.getHtml().xpath("//div[@class='BlogTags']/a/text()").all());*/
 
-//        Html titleHtml = (Html) page.getHtml().xpath("//div[@class='roundleft']/div[@class='roundtitle']/div[@class='hang  bluecolor fontsize16']/a[@title]");
+//        Html titleHtml = (Html) pqage.getHtml().xpath("//div[@class='roundleft']/div[@class='roundtitle']/div[@class='hang  bluecolor fontsize16']/a[@title]");
 
         String progress = trim(page.getHtml().$("div.rounddiv:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(3)").xpath("div/text()").toString());
         if (!progress.contains("100")) {
