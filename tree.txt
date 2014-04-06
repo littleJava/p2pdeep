@@ -1,0 +1,140 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.p2p:p2pdeep:war:1.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 182, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] Using the builder org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder with a thread count of 1
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building The p2p analyzer 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ p2pdeep ---
+[INFO] com.p2p:p2pdeep:war:1.0-SNAPSHOT
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.6:compile
+[INFO] +- org.slf4j:jcl-over-slf4j:jar:1.7.6:compile
+[INFO] +- ch.qos.logback:logback-classic:jar:1.1.2:runtime
+[INFO] |  \- ch.qos.logback:logback-core:jar:1.1.2:runtime
+[INFO] +- commons-logging:commons-logging:jar:99.0-does-not-exist:compile
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.springframework:spring-webmvc:jar:4.0.3.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.0.3.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.0.3.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-aop:jar:4.0.3.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.0.3.RELEASE:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.0.3.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.0.3.RELEASE:compile
+[INFO] +- joda-time:joda-time:jar:2.3:compile
+[INFO] +- com.h2database:h2:jar:1.3.175:compile
+[INFO] +- com.j256.ormlite:ormlite-jdbc:jar:4.48:compile
+[INFO] |  \- com.j256.ormlite:ormlite-core:jar:4.48:compile
+[INFO] +- com.alibaba:fastjson:jar:1.1.37:compile
+[INFO] +- org.simpleframework:simple-xml:jar:2.7.1:compile
+[INFO] |  +- stax:stax-api:jar:1.0.1:compile
+[INFO] |  +- stax:stax:jar:1.2.0:compile
+[INFO] |  \- xpp3:xpp3:jar:1.1.3.3:compile
+[INFO] +- com.google.code.findbugs:jsr305:jar:2.0.3:compile
+[INFO] +- com.google.guava:guava:jar:16.0:compile
+[INFO] +- us.codecraft:webmagic-core:jar:0.4.3:compile
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.3.3:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpcore:jar:4.3.2:compile
+[INFO] |  |  \- commons-codec:commons-codec:jar:1.6:compile
+[INFO] |  +- org.apache.commons:commons-lang3:jar:3.1:compile
+[INFO] |  +- us.codecraft:xsoup:jar:0.2.0:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  +- net.sourceforge.htmlcleaner:htmlcleaner:jar:2.5:compile
+[INFO] |  |  \- org.jdom:jdom2:jar:2.0.4:compile
+[INFO] |  +- org.assertj:assertj-core:jar:1.5.0:compile
+[INFO] |  +- org.jsoup:jsoup:jar:1.7.2:compile
+[INFO] |  \- commons-io:commons-io:jar:1.3.2:compile
+[INFO] +- us.codecraft:webmagic-extension:jar:0.4.3:compile
+[INFO] |  +- redis.clients:jedis:jar:2.0.0:compile
+[INFO] |  |  \- commons-pool:commons-pool:jar:1.5.5:compile
+[INFO] |  \- com.jayway.jsonpath:json-path:jar:0.8.1:compile
+[INFO] |     +- net.minidev:json-smart:jar:1.1.1:compile
+[INFO] |     \- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- org.projectreactor:reactor-core:jar:1.0.0.RELEASE:compile
+[INFO] |  \- com.lmax:disruptor:jar:3.2.0:compile
+[INFO] +- org.projectreactor:reactor-spring:jar:1.0.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context-support:jar:3.2.3.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:3.2.3.RELEASE:compile
+[INFO] |     \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] \- org.eclipse.jetty:jetty-maven-plugin:jar:9.1.3.v20140225:provided
+[INFO]    +- org.apache.maven:maven-plugin-api:jar:3.0.3:provided
+[INFO]    |  +- org.apache.maven:maven-model:jar:3.0.3:provided
+[INFO]    |  \- org.sonatype.sisu:sisu-inject-plexus:jar:2.1.1:provided
+[INFO]    |     \- org.sonatype.sisu:sisu-inject-bean:jar:2.1.1:provided
+[INFO]    |        \- org.sonatype.sisu:sisu-guice:jar:no_aop:2.9.4:provided
+[INFO]    +- org.apache.maven:maven-artifact:jar:3.0.3:provided
+[INFO]    |  \- org.codehaus.plexus:plexus-utils:jar:2.0.6:provided
+[INFO]    +- org.apache.maven:maven-core:jar:3.0.3:provided
+[INFO]    |  +- org.apache.maven:maven-settings:jar:3.0.3:provided
+[INFO]    |  +- org.apache.maven:maven-settings-builder:jar:3.0.3:provided
+[INFO]    |  +- org.apache.maven:maven-repository-metadata:jar:3.0.3:provided
+[INFO]    |  +- org.apache.maven:maven-model-builder:jar:3.0.3:provided
+[INFO]    |  +- org.apache.maven:maven-aether-provider:jar:3.0.3:provided
+[INFO]    |  |  \- org.sonatype.aether:aether-spi:jar:1.11:provided
+[INFO]    |  +- org.sonatype.aether:aether-impl:jar:1.11:provided
+[INFO]    |  +- org.sonatype.aether:aether-api:jar:1.11:provided
+[INFO]    |  +- org.sonatype.aether:aether-util:jar:1.11:provided
+[INFO]    |  +- org.codehaus.plexus:plexus-interpolation:jar:1.14:provided
+[INFO]    |  +- org.codehaus.plexus:plexus-classworlds:jar:2.4:provided
+[INFO]    |  +- org.codehaus.plexus:plexus-component-annotations:jar:1.5.5:provided
+[INFO]    |  \- org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3:provided
+[INFO]    |     \- org.sonatype.plexus:plexus-cipher:jar:1.4:provided
+[INFO]    +- org.apache.maven.plugin-tools:maven-plugin-tools-api:jar:3.1:provided
+[INFO]    |  +- org.apache.maven:maven-project:jar:2.2.1:provided
+[INFO]    |  |  +- org.apache.maven:maven-profile:jar:2.2.1:provided
+[INFO]    |  |  +- org.apache.maven:maven-artifact-manager:jar:2.2.1:provided
+[INFO]    |  |  |  +- org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-6:provided
+[INFO]    |  |  |  \- backport-util-concurrent:backport-util-concurrent:jar:3.1:provided
+[INFO]    |  |  \- org.apache.maven:maven-plugin-registry:jar:2.2.1:provided
+[INFO]    |  +- org.apache.maven:maven-plugin-descriptor:jar:2.2.1:provided
+[INFO]    |  \- org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:provided
+[INFO]    |     \- classworlds:classworlds:jar:1.1-alpha-2:provided
+[INFO]    +- org.eclipse.jetty:jetty-util:jar:9.1.3.v20140225:provided
+[INFO]    +- org.eclipse.jetty:jetty-webapp:jar:9.1.3.v20140225:provided
+[INFO]    |  +- org.eclipse.jetty:jetty-xml:jar:9.1.3.v20140225:provided
+[INFO]    |  \- org.eclipse.jetty:jetty-servlet:jar:9.1.3.v20140225:provided
+[INFO]    +- org.eclipse.jetty:jetty-jaas:jar:9.1.3.v20140225:provided
+[INFO]    |  \- org.eclipse.jetty:jetty-security:jar:9.1.3.v20140225:provided
+[INFO]    +- org.eclipse.jetty:jetty-plus:jar:9.1.3.v20140225:provided
+[INFO]    +- org.eclipse.jetty:jetty-jndi:jar:9.1.3.v20140225:provided
+[INFO]    +- org.eclipse.jetty:jetty-server:jar:9.1.3.v20140225:provided
+[INFO]    |  +- org.eclipse.jetty:jetty-http:jar:9.1.3.v20140225:provided
+[INFO]    |  \- org.eclipse.jetty:jetty-io:jar:9.1.3.v20140225:provided
+[INFO]    +- org.eclipse.jetty:jetty-jmx:jar:9.1.3.v20140225:provided
+[INFO]    +- org.eclipse.jetty:jetty-annotations:jar:9.1.3.v20140225:provided
+[INFO]    |  +- javax.annotation:javax.annotation-api:jar:1.2:provided
+[INFO]    |  +- org.ow2.asm:asm:jar:4.1:provided
+[INFO]    |  \- org.ow2.asm:asm-commons:jar:4.1:provided
+[INFO]    |     \- org.ow2.asm:asm-tree:jar:4.1:provided
+[INFO]    +- org.eclipse.jetty.websocket:javax-websocket-server-impl:jar:9.1.3.v20140225:provided
+[INFO]    |  +- org.eclipse.jetty.websocket:javax-websocket-client-impl:jar:9.1.3.v20140225:provided
+[INFO]    |  \- javax.websocket:javax.websocket-api:jar:1.0:provided
+[INFO]    +- org.eclipse.jetty.websocket:websocket-server:jar:9.1.3.v20140225:provided
+[INFO]    |  +- org.eclipse.jetty.websocket:websocket-common:jar:9.1.3.v20140225:provided
+[INFO]    |  |  \- org.eclipse.jetty.websocket:websocket-api:jar:9.1.3.v20140225:provided
+[INFO]    |  +- org.eclipse.jetty.websocket:websocket-client:jar:9.1.3.v20140225:provided
+[INFO]    |  \- org.eclipse.jetty.websocket:websocket-servlet:jar:9.1.3.v20140225:provided
+[INFO]    +- org.eclipse.jetty:jetty-jsp:jar:9.1.3.v20140225:provided
+[INFO]    |  +- org.eclipse.jetty.toolchain:jetty-schemas:jar:3.1.M0:provided
+[INFO]    |  +- javax.servlet.jsp:javax.servlet.jsp-api:jar:2.3.1:provided
+[INFO]    |  +- org.glassfish.web:javax.servlet.jsp:jar:2.3.2:provided
+[INFO]    |  +- org.eclipse.jetty.orbit:javax.servlet.jsp.jstl:jar:1.2.0.v201105211821:provided
+[INFO]    |  +- org.glassfish.web:javax.servlet.jsp.jstl:jar:1.2.2:provided
+[INFO]    |  +- org.glassfish:javax.el:jar:3.0.0:provided
+[INFO]    |  \- org.eclipse.jetty.orbit:org.eclipse.jdt.core:jar:3.8.2.v20130121:provided
+[INFO]    \- javax.transaction:javax.transaction-api:jar:1.2:provided
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.843 s
+[INFO] Finished at: 2014-04-06T19:58:55+08:00
+[INFO] Final Memory: 16M/213M
+[INFO] ------------------------------------------------------------------------

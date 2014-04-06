@@ -43,7 +43,7 @@ public class CustomSite extends Site {
             , "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; 2345Explorer 3.2.0.12012)"
     );
 
-    private List<HttpHost> httpProxies = HttpProxyFactory.getProxies();
+//    private List<HttpHost> httpProxies = HttpProxyFactory.getProxies();
 
 
     public CustomSite addUserAgent(String userAgent) {
@@ -68,7 +68,7 @@ public class CustomSite extends Site {
         return this.addUserAgent(userAgent);
     }
 
-    @Override
+    /*@Override
     public Site setHttpProxy(HttpHost httpProxy) {
         return this.addHttpProxy(httpProxy);
     }
@@ -87,5 +87,5 @@ public class CustomSite extends Site {
         logger.info("http proxy="+httpHost);
         return httpHost;
 //        return null;
-    }
+    }*/
 }

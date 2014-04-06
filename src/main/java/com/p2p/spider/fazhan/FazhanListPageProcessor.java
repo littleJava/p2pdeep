@@ -8,8 +8,9 @@ import com.p2p.spider.common.Platform;
 import com.p2p.spider.fazhan.module.Invest;
 import com.p2p.spider.fazhan.module.InvestSet;
 import com.p2p.spider.fazhan.pipeline.DbListPagePipeline;
+import com.p2p.spider.net.HttpProxyFactory;
 import com.p2p.spider.utils.RandomUtil;
-import com.sun.istack.internal.Nullable;
+import org.apache.http.HttpHost;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -18,6 +19,7 @@ import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -31,12 +33,13 @@ import static org.apache.commons.lang.StringUtils.*;
 @Component
 public class FazhanListPageProcessor implements PageProcessor {
 
-    private Site site ;
+    private Site site;
 
     public FazhanListPageProcessor() {
         /*site = Site.me().setDomain("my.oschina.net")
                 .addStartUrl("http://my.oschina.net/flashsword/blog");*/
-        site = CustomSite.me().setDomain("fazhan.com");
+        HttpHost proxy = HttpProxyFactory.getProxy();
+        site = CustomSite.me().setDomain("fazhan.com").setHttpProxy(proxy);
     }
 
     @Override
@@ -108,25 +111,10 @@ public class FazhanListPageProcessor implements PageProcessor {
     }
 
     public static void main(String[] args) throws Exception {
-        /*Spider.create(new OschinaBlogPageProcesser())
-                .addPipeline(new ConsolePipeline()).run();*/
-
-//        FazhanXmlPipeline xmlPipeline = new FazhanXmlPipeline("d:/tmp/fazhan.xml");
-        String urlPrefix = "http://www.fazhan.com/tenders/index";
-        for (int i = 0; i < 30; i++) {
-            String url;
-            if (i == 0) {
-                url = urlPrefix + ".html";
-            } else {
-                url = urlPrefix +i+ ".html";
-            }
-            DbListPagePipeline dbListPagePipeline = new DbListPagePipeline();
-            Spider.create(new FazhanListPageProcessor()).addUrl(url)
-                    .addPipeline(new ConsolePipeline()).addPipeline(dbListPagePipeline)/*.addPipeline(xmlPipeline)*/
-                    .run();
-            TimeUnit.MILLISECONDS.sleep(RandomUtil.getInt(1000, 3000));
-            FazhanDetailPageProcessor.main(null);
-            TimeUnit.MILLISECONDS.sleep(RandomUtil.getInt(1000, 5000));
-        }
+        String url = "http://www.fazhan.com/tenders/index.html";
+        DbListPagePipeline dbListPagePipeline = new DbListPagePipeline();
+        Spider.create(new FazhanListPageProcessor()).addUrl(url)
+                .addPipeline(new ConsolePipeline()).addPipeline(dbListPagePipeline)/*.addPipeline(xmlPipeline)*/
+                .run();
     }
 }

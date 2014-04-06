@@ -8,7 +8,6 @@ import com.p2p.spider.fazhan.module.Invest;
 import com.p2p.spider.fazhan.module.Investor;
 import com.p2p.spider.fazhan.pipeline.DbDetailPagePipeline;
 import com.p2p.spider.net.HttpProxyFactory;
-import com.sun.istack.internal.Nullable;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.http.HttpHost;
 import org.springframework.stereotype.Component;
@@ -19,6 +18,7 @@ import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 import static org.apache.commons.lang.StringUtils.*;
@@ -41,10 +41,10 @@ public class FazhanDetailPageProcessor implements PageProcessor {
         site = CustomSite.me().setDomain("fazhan.com").setHttpProxy(proxy)
                 .addHeader("Host", "fazhan.com")
                 .addHeader("Cache-Control","0")
-                .addCookie("CNZZDATA1000012626", "826743153-1394509633-%7C1394509633")
+//                .addCookie("CNZZDATA1000012626", "826743153-1394509633-%7C1394509633")
                 .addCookie("dy_cookie_time", "604800")
-                .addCookie("PHPSESSID", "iep68jml51rf5dvb646gcebb33")
-                .addCookie("0f6c2a6bf71d5982091346175e19d8c7", "06fb1199FTRwe04ukEj45lt8BEn4MoBLIbHaF7ty5rGL0bu9SGaRISQ4eSo")
+                .addCookie("PHPSESSID", "r208j1kbf965u6cf1jn7hj9tn6")
+                .addCookie("0f6c2a6bf71d5982091346175e19d8c7", "f5794fhTVRHNeTaUvMXAyqj6%2BKzITJKpBZbq7RVFsoLMiCjXCTeB9%2BUwnAk")
         ;
     }
 

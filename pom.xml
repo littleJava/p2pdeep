@@ -4,20 +4,59 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.p2pdeep</groupId>
-    <artifactId>spider</artifactId>
+    <groupId>com.p2p</groupId>
+    <artifactId>p2pdeep</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>The p2p analyzer</name>
     <properties>
         <webmagic-version>0.4.3</webmagic-version>
-        <spring-version>4.0.3.RELEASE</spring-version>
         <project-encoding>UTF-8</project-encoding>
         <java-source-version>1.6</java-source-version>
         <java-target-version>1.6</java-target-version>
+        <spring-version>4.0.3.RELEASE</spring-version>
+        <slf4j-version>1.7.6</slf4j-version>
+        <jetty-version>9.1.3.v20140225</jetty-version>
     </properties>
     <dependencies>
+        <!-- slf4j logger + logback -->
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+        <!-- 将现有的jakarta commons logging的调用转换成slf4j的调用。 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+        <!-- runtime: 程序不需要调用，只需要调用slf4j -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.2</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>99.0-does-not-exist</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${spring-version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
             <version>${spring-version}</version>
         </dependency>
         <dependency>
@@ -46,7 +85,11 @@
             <artifactId>simple-xml</artifactId>
             <version>2.7.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>2.0.3</version>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -57,6 +100,12 @@
             <groupId>us.codecraft</groupId>
             <artifactId>webmagic-core</artifactId>
             <version>${webmagic-version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--webmagic的扩展模块，提供一些更方便的编写爬虫的工具。
         包括注解格式定义爬虫、JSON、分布式等支持。-->
@@ -95,9 +144,48 @@
             <artifactId>reactor-spring</artifactId>
             <version>1.0.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-maven-plugin</artifactId>
+            <version>${jetty-version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <build>
+        <finalName>p2pdeep</finalName>
+        <!--<filters>
+            <filter>${props}</filter>
+        </filters>-->
+        <resources>
+            <!--<resource>
+                <directory>src/main/webapp</directory>
+                <filtering>true</filtering>
+            </resource>-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <resourceEncoding>${project-encoding}</resourceEncoding>
+                    <warName>p2pdeep</warName>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <webResources>
+                        <resource>
+                            <directory>${basedir}/src/main/webapp</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -115,9 +203,46 @@
                     <encoding>${project-encoding}</encoding>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-version}</version>
+                <configuration>
+                    <httpConnector>
+                        <port>8080</port>
+                    </httpConnector>
+                    <contextPath>/</contextPath>
+                </configuration>
+            </plugin>
         </plugins>
 
     </build>
-
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <property-file>env/dev.properties</property-file>
+                <logback-file>logback-dev.xml</logback-file>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <property-file>env/dev.properties</property-file>
+                <logback-file>logback-dev.xml</logback-file>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <property-file>env/dev.properties</property-file>
+                <logback-file>logback-dev.xml</logback-file>
+                <!--<props>env/prod.properties</props>-->
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 
 </project>

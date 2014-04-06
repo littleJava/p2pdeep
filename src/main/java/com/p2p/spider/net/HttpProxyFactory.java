@@ -19,7 +19,7 @@ import java.util.List;
 public class HttpProxyFactory {
     private static final Logger logger = LoggerFactory.getLogger(HttpProxyFactory.class);
     public static final String[] proxies = new String[]{
-            "222.134.147.74:8080@HTTP;山东省淄博市 联通",
+            "221.130.29.184:8888@HTTP;江苏省南京市 移动",
 //            "123.129.240.176:8081@HTTP;山东省 联通",
 //            "183.129.198.231:80@HTTP;浙江省杭州市 电信",
 //            "111.1.36.140:80@HTTP;浙江省温州市 移动",
