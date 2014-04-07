@@ -16,9 +16,10 @@ CREATE TABLE `invest` (
 `url` VARCHAR(255) ,
 `step` smallint DEFAULT 0,
 `invest_desc` VARCHAR(1024) ,
-PRIMARY KEY (`id`) ,
+PRIMARY KEY (`id`)
 );
 CREATE UNIQUE INDEX `invest_unique_idx` ON `invest` ( `invest_id`, `platform` );
+ALTER TABLE `invest` ENGINE = InnoDB
 /*----
   ---- alter table invest
   ---- alter column invest_desc varchar(1024);
@@ -34,6 +35,9 @@ CREATE TABLE `investor` (
 `invest_id` VARCHAR(64) ,
 `platform` VARCHAR(32) ,
 PRIMARY KEY (`id`) ) ;
+
+ALTER TABLE `investor` ORDER BY `id`
+
 --DROP INDEX public.investor_unique_idx;
 --CREATE UNIQUE INDEX `investor_unique_idx` ON `investor` ( `invest_id`, `platform` );
 
