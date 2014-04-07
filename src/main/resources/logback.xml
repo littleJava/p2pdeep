@@ -7,6 +7,10 @@
         </layout>
 </appender>
 
+    <logger name="com.p2p">
+        <level value="DEBUG" />
+    </logger>
+
     <logger name="org.apache">
         <level value="INFO" />
     </logger>

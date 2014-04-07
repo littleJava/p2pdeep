@@ -44,6 +44,11 @@
             <version>99.0-does-not-exist</version>
         </dependency>
         <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
@@ -153,9 +158,9 @@
     </dependencies>
     <build>
         <finalName>p2pdeep</finalName>
-        <!--<filters>
+        <filters>
             <filter>${props}</filter>
-        </filters>-->
+        </filters>
         <resources>
             <!--<resource>
                 <directory>src/main/webapp</directory>
@@ -165,7 +170,8 @@
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
-                <include>**/*.xml</include>
+                    <include>**/*.xml</include>
+                    <include>env.properties</include>
                 </includes>
             </resource>
         </resources>
@@ -221,26 +227,27 @@
         <profile>
             <id>dev</id>
             <properties>
-                <property-file>env/dev.properties</property-file>
-                <logback-file>logback-dev.xml</logback-file>
+                <props>env-dev.properties</props>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
         <profile>
             <id>test</id>
             <properties>
-                <property-file>env/dev.properties</property-file>
-                <logback-file>logback-dev.xml</logback-file>
+                <props>env-dev.properties</props>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
-                <property-file>env/dev.properties</property-file>
-                <logback-file>logback-dev.xml</logback-file>
-                <!--<props>env/prod.properties</props>-->
+                <!--<property-file>env/dev.properties</property-file>
+                <logback-file>logback-dev.xml</logback-file>-->
+                <props>env-prod.properties</props>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
         </profile>
     </profiles>
